@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <title>Stocks Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7aa840a654.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <section class="header">
+      <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+  </section>
+
+  <!-- if profile data is stored.... -->
+  <% if (profile.length > 2)  { %>
+    <section class="portfolio">
+      <h2>Current Portfolio</h2>
+      <table>
+        <% for(var i=0; i<profile.length; i++) {%>
+          <tr>
+            <td><%= profile[i].name %> </td>
+            <td><%= profile[i].amount %> </td>
+          </tr>
+        <% } %>
+      </table>
+    </section>
+  <% } %>
+
+
+  <section class="container">
+    <section class="search">
+      <h1 id="answer">Enter stocks symbol to search for current pricing</h1>
+      <p id="current"></p>
+
+      <input type="text" name="sym" value="" placeholder="enter symbol here" class="searchInput">
+      <button type="button" name="button" class="searchButton">search</button>
+    </section>
+
+
+    <section class="add">
+      <h2>^Add to portfolio? Enter amount below</h2>
+      <section class="">
+        <input type="text" name="amount" value="" placeholder="amount" class="amountInput">
+        <button type="button" name="button" class="addButton">Add to Port</button>
+      </section>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
