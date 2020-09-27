@@ -17,10 +17,10 @@
     <section class="portfolio">
       <h2>Current Portfolio</h2>
       <table>
-        <% for(var i=0; i<profile.length; i++) {%>
+        <% for(var i=2; i<profile.length; i++) {%>
           <tr>
-            <td><%= profile[i].name %> </td>
-            <td><%= profile[i].amount %> </td>
+            <td><%= profile[i][0] %> </td>
+            <td><%= profile[i][1] %> </td>
           </tr>
         <% } %>
       </table>

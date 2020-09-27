@@ -14,27 +14,16 @@ module.exports = function(app, passport, db) {
       db.collection('profiles') // finds user by current email
       .find({email:req.user.local.email}).toArray((err, result) => {
         if (err) return console.log(err)
-
-        let stockData = Object.entries(result)
-        stockData = Object.entries(stockData[0][1])
-        // console.log(stockData.length);
-
-        // if theres anything
-        if (stockData.length>2){
-          var profile = []
-          let total = 0;
-          // to skip over the first two entries, id and email.
-          for (let i = 2; i <= stockData.length-1; i++ ){
-            profile.push({
-              'name':stockData[i][0],
-              'amount':parseInt(stockData[i][1]),
+        // console.log(results);
+        if(result.length){
+          if ( Object.entries( result[0] ).length > 1) {
+            let stockData = Object.entries(result[0])
+            console.log('stock data is ',stockData);
+            res.render('profile.ejs', {
+              user : req.user,
+              profile:stockData
             })
           }
-
-          res.render('profile.ejs', {
-            user : req.user,
-            profile:profile
-          })
         }
         else{
           let profile = [{email:0}]
